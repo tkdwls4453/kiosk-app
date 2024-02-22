@@ -1,5 +1,6 @@
 package com.example.kioskapp.api.service.product.response;
 
+import com.example.kioskapp.domain.product.Product;
 import com.example.kioskapp.domain.product.ProductSellingStatus;
 import com.example.kioskapp.domain.product.ProductType;
 import jakarta.persistence.*;
@@ -28,5 +29,15 @@ public class ProductResponse {
         this.sellingStatus = sellingStatus;
         this.name = name;
         this.price = price;
+    }
+
+    public static ProductResponse of(Product product) {
+        return ProductResponse.builder()
+                .productNumber(product.getProductNumber())
+                .name(product.getName())
+                .price(product.getPrice())
+                .sellingStatus(product.getSellingStatus())
+                .type(product.getType())
+                .build();
     }
 }

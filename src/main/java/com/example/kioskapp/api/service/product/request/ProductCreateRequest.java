@@ -1,5 +1,6 @@
 package com.example.kioskapp.api.service.product.request;
 
+import com.example.kioskapp.domain.product.Product;
 import com.example.kioskapp.domain.product.ProductSellingStatus;
 import com.example.kioskapp.domain.product.ProductType;
 import jakarta.persistence.EnumType;
@@ -26,5 +27,15 @@ public class ProductCreateRequest {
         this.sellingStatus = sellingStatus;
         this.name = name;
         this.price = price;
+    }
+
+    public Product toEntity(String nextProductNumber) {
+        return Product.builder()
+                .productNumber(nextProductNumber)
+                .name(this.name)
+                .type(this.type)
+                .sellingStatus(this.sellingStatus)
+                .price(this.price)
+                .build();
     }
 }
