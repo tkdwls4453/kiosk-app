@@ -4,6 +4,7 @@ import com.example.kioskapp.api.service.product.request.ProductCreateRequest;
 import com.example.kioskapp.api.service.product.response.ProductResponse;
 import com.example.kioskapp.domain.product.Product;
 import com.example.kioskapp.domain.product.ProductRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ class ProductServiceTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @AfterEach
+    void tearDown() {
+        productRepository.deleteAllInBatch();
+    }
 
     @DisplayName("신규 상품을 등록한다. 상품번호는 가장 최근 상품의 상품번호에서 1 증가한 값이다.")
     @Test
