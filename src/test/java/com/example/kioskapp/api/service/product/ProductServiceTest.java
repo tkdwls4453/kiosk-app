@@ -1,6 +1,6 @@
 package com.example.kioskapp.api.service.product;
 
-import com.example.kioskapp.api.service.product.request.ProductCreateRequest;
+import com.example.kioskapp.api.service.product.request.ProductCreateServiceRequest;
 import com.example.kioskapp.api.service.product.response.ProductResponse;
 import com.example.kioskapp.domain.product.Product;
 import com.example.kioskapp.domain.product.ProductRepository;
@@ -44,7 +44,7 @@ class ProductServiceTest {
 
         productRepository.save(product);
 
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")
@@ -72,7 +72,7 @@ class ProductServiceTest {
     @Test
     void createProduct2(){
         // Given
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")
